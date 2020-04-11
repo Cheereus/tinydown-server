@@ -8,9 +8,9 @@ class Seller(models.Model):
     # 余额
     balance = models.FloatField(default=1.0)  
     # 用户名
-    seller_name = models.CharField(max_length=200, default='NULL')
+    seller_name = models.CharField(max_length=200, default='')
     # 密码
-    seller_password = models.CharField(max_length=200, default='NULL')
+    seller_password = models.CharField(max_length=200, default='')
 
 
     def __str__(self):
@@ -24,9 +24,9 @@ class Account(models.Model):
     # 关联号主
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
     # 用户名
-    account_name = models.CharField(max_length=200, default='NULL')
+    account_name = models.CharField(max_length=200, default='')
     # 密码
-    account_password = models.CharField(max_length=200, default='NULL')
+    account_password = models.CharField(max_length=200, default='')
     # 状态
     state = models.IntegerField(default=0)
     # 创建时间
@@ -61,7 +61,7 @@ class Order(models.Model):
     # 价格
     price = models.FloatField(default=1.0)
     # 历史
-    history = models.CharField(max_length=200, default='NULL')
+    history = models.CharField(max_length=200, default='')
 
     def __str__(self):
         return self.history
