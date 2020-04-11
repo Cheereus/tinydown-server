@@ -1,10 +1,23 @@
 from django.db import models
 
+# 卖家
+class Seller(models.Model):
+
+    # id
+    seller_id = models.IntegerField(default=0)
+    # 余额
+    balance = models.DecimalField(default=1.0, max_digits=100.0, decimal_places=2)  
+
+    def __str__(self):
+        return self.seller_id
+
 # 账号
 class Account(models.Model):
 
     # id
     account_id = models.IntegerField(default=0)
+    # 关联号主
+    seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
     # 用户名
     account_name = models.CharField(max_length=200)
     # 密码
@@ -21,6 +34,9 @@ class Account(models.Model):
     current_users = models.IntegerField(default=0)
     # 总计使用人数
     his_users = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.account_name
 
 # 订单
 class Order(models.Model):
@@ -41,3 +57,6 @@ class Order(models.Model):
     price = models.DecimalField(default=1.0, max_digits=100.0, decimal_places=2)
     # 历史
     history = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.order_id
