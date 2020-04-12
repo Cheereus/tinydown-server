@@ -1,0 +1,9 @@
+{% if latest_account_list %}
+    <ul>
+    {% for account in latest_account_list %}
+        <li><a href="/seller/{{ account.account_id }}/">{{ account.account_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>暂无账号</p>
+{% endif %}
